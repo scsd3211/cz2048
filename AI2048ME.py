@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import math
 import copy
+import random
 def Log2Handle(TotalHAHA):
     TotalNumLog = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
     for i in range(4):
@@ -134,6 +135,50 @@ def LeftHandle(TotalHAHA):
             i = i + 1;
     print("LeftHandle", TotalNumLog)
     return TotalNumLog,merge
+'''
+随机选择一个放个放入数字2
+'''
+def GridRandom(TotalHAHA):
+    TotalNumLog = copy.deepcopy(TotalHAHA)
+    GetIt = 0   #是否可以找到空闲的位置
+    HowManyZero = 0;
+    for j in range(4):
+        for k in range( 4):
+            if (TotalNumLog[j][k] == 0):
+                HowManyZero = HowManyZero + 1
+    if(HowManyZero == 0):
+        return TotalNumLog,GetIt
+    whichOne = random.randint(1,HowManyZero)
+    countOne =0;
+    for j in range(4):
+        for k in range(4):
+            if (TotalNumLog[j][k] == 0):
+                countOne = countOne + 1
+                if(countOne == whichOne):
+                    TotalNumLog[j][k] = 2
+                    GetIt = 1
+                    return TotalNumLog, GetIt
+
+    return TotalNumLog,GetIt
+'''
+选择位置放个放入数字2
+'''
+
+def GridSetEmpty2(TotalHAHA,whereIn):
+    TotalNumLog = copy.deepcopy(TotalHAHA)
+    GetIt = 0   #是否可以找到空闲的位置
+    HowManyZero = 0;
+    i = int(whereIn/4)
+    j = whereIn%4
+    if TotalNumLog[i][j] == 0:
+        TotalNumLog[i][j] = 2
+        GetIt = 1
+    else:
+        pass
+    print("GridSetEmpty2", TotalNumLog)
+    return TotalNumLog,GetIt
+
+
 
 class AI2048ME:
     """一个简单的类实例"""

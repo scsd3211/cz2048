@@ -166,3 +166,6 @@ momotemp = haha.monoWeightCount(Log2Out)
 print("momotemp",momotemp)
 
 print(NONO)
+
+
+print("ininin",int(15/4))
